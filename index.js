@@ -19,11 +19,25 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
   bot.sendMessage(chatId, resp);
 });
 
-// Listen for any kind of message. There are different kinds of
-// messages.
 bot.on("message", (msg) => {
-  const chatId = msg.chat.id;
+  const greeting = "Hi Earthling! How are you feeling today?";
+  if (msg.text.toString().toLowerCase().indexOf("hi") === 0) {
+    bot.sendMessage(msg.chat.id, greeting);
+  }
+});
 
-  // send a message to the chat acknowledging receipt of their message
-  bot.sendMessage(chatId, "Received your message");
+bot.on("message", (msg) => {
+  const replyToSad =
+    "It’s okay. Everything will be okay. Where does the problem come from?";
+  if (msg.text.toString().toLowerCase().includes("sad")) {
+    bot.sendMessage(msg.chat.id, replyToSad);
+  }
+});
+
+bot.onText(/\/try/, (msg) => {
+  bot.sendMessage(msg.chat.id, "Welcome", {
+    reply_markup: {
+      keyboard: [["Sample text", "Second sample"], ["Keyboard"], ["I'm robot"]],
+    },
+  });
 });
