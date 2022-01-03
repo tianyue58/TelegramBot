@@ -21,23 +21,65 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
 
 bot.on("message", (msg) => {
   const greeting = "Hi Earthling! How are you feeling today?";
-  if (msg.text.toString().toLowerCase().indexOf("hi") === 0) {
+  if (msg.text.toString().toLowerCase().indexOf("hi") === 0 || msg.text.toString().toLowerCase().includes("bot")) {
     bot.sendMessage(msg.chat.id, greeting);
   }
 });
 
 bot.on("message", (msg) => {
-  const replyToSad =
-    "It’s okay. Everything will be okay. Where does the problem come from?";
+  
   if (msg.text.toString().toLowerCase().includes("sad")) {
-    bot.sendMessage(msg.chat.id, replyToSad);
+    
+    bot.sendMessage(msg.chat.id, "Where does the problem come from?", {
+      "reply_markup": {
+          keyboard: [["At school"],   ["At work/internship"], ["In my private life"]]
+          }
+      });
   }
 });
 
-bot.onText(/\/try/, (msg) => {
-  bot.sendMessage(msg.chat.id, "Welcome", {
-    reply_markup: {
-      keyboard: [["Sample text", "Second sample"], ["Keyboard"], ["I'm robot"]],
-    },
-  });
+bot.on("message", (msg) => {
+  const replyToSchool =
+    "View the tips below to alleviate stress from school and improve your mental health.\n \nRemember to breathe \n Eat, sleep and exercise well \n Set realistic goals \n \n For more tips, check out our interactive website at www.nusodyssey.com.";
+  if (msg.text.toString().toLowerCase().includes("school")) {
+    bot.sendMessage(msg.chat.id, replyToSchool); 
+    bot.sendVideo(msg.chat.id,"https://v-phinf.pstatic.net//20210225_103/1614238878699nLzOy_GIF/image.gif",{caption : "Hope you'll feel better soon. I wish I could give you a hug."} ); 
+  }
 });
+
+bot.on("message", (msg) => {
+  const replyToWork =
+    "View the tips below to alleviate stress from work or internship and improve your mental health.\n \nRemember to breathe \n Eat, sleep and exercise well \n Set realistic goals \n \n For more tips, check out our interactive website at www.nusodyssey.com.";
+  if (msg.text.toString().toLowerCase().includes("work")) {
+    bot.sendMessage(msg.chat.id, replyToSchool);  
+  }
+});
+
+bot.on("message", (msg) => {
+  const replyToPrivate =
+    "View the tips below to alleviate stress from your private life and improve your mental health.\n \nRemember to breathe \n Eat, sleep and exercise well \n Set realistic goals \n \n For more tips, check out our interactive website at www.nusodyssey.com.";
+  if (msg.text.toString().toLowerCase().includes("private")) {
+    bot.sendMessage(msg.chat.id, replyToSchool);  
+  }
+});
+
+bot.onText(/\/start/, (msg) => {
+
+  bot.sendMessage(msg.chat.id, "Welcome", {
+  "reply_markup": {
+      "keyboard": [["See our campaign"],   ["See our website"], ["Play with the bot"]]
+      }
+  });
+  
+  });
+
+  bot.on("message", (msg) => {
+  
+    if (msg.text.toString().toLowerCase().includes("campaign")) {
+      bot.sendMessage(msg.chat.id, "Introducing our campaign, NUS Odyssey!"); 
+      bot.sendMessage(msg.chat.id, "Fllow this link to see our campaign details. \n https://drive.google.com/file/d/13WPAlLQ5kHbbdDeaRiJyTdM3G6H94M67/view?usp=sharing"); 
+    
+    }
+  });
+
+
