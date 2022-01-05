@@ -51,7 +51,7 @@ bot.on("message", (msg) => {
   const replyToWork =
     "View the tips below to alleviate stress from work or internship and improve your mental health.\n \nRemember to breathe \n Eat, sleep and exercise well \n Set realistic goals \n \n For more tips, check out our interactive website at www.nusodyssey.com.";
   if (msg.text.toString().toLowerCase().includes("work")) {
-    bot.sendMessage(msg.chat.id, replyToSchool);  
+    bot.sendMessage(msg.chat.id, replyToWork);  
   }
 });
 
@@ -59,7 +59,7 @@ bot.on("message", (msg) => {
   const replyToPrivate =
     "View the tips below to alleviate stress from your private life and improve your mental health.\n \nRemember to breathe \n Eat, sleep and exercise well \n Set realistic goals \n \n For more tips, check out our interactive website at www.nusodyssey.com.";
   if (msg.text.toString().toLowerCase().includes("private")) {
-    bot.sendMessage(msg.chat.id, replyToSchool);  
+    bot.sendMessage(msg.chat.id, replyPrivate);  
   }
 });
 
