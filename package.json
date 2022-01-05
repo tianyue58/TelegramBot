@@ -11,10 +11,6 @@
     "type": "git",
     "url": "git+https://github.com/nus-teletubbies/TelegramBot.git"
   },
-  "engines": {
-    "node": "14.17.0",
-    "npm": "8.2.0"
-  },
   "author": "",
   "license": "ISC",
   "bugs": {
